@@ -1,0 +1,337 @@
+:root {
+    --bg1: #060a24;
+    --bg2: #12195a;
+    --gold: #ffd86b;
+    --lav: #c9b8ff;
+    --silver: #dfe6f5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    background: radial-gradient(ellipse at top, var(--bg2), var(--bg1) 70%);
+    color: var(--silver);
+    font-family: system-ui, sans-serif;
+}
+
+/* Body*/
+#sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.screen {
+    position: relative;
+    z-index: 1;
+}
+
+body {
+    font-family: 'Quicksand', 'Amiri', system-ui, sans-serif;
+}
+
+.screen {
+    min-height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 64px 24px 24px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.moon {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fffbe6, var(--gold));
+    box-shadow: 0 0 50px rgba(255, 216, 107, 0.6);
+    margin-bottom: 30px;
+}
+
+.script {
+    font-family: 'Dancing Script', 'Amiri', cursive;
+    font-size: 2.6rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    text-shadow: 0 0 12px rgba(255, 216, 107, 0.7), 0 0 28px rgba(255, 216, 107, 0.35);
+}
+
+.sub {
+    color: var(--lav);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.btn {
+    font-family: inherit;
+    font-size: 1.1rem;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+    background: var(--gold);
+    color: var(--bg1);
+    cursor: pointer;
+}
+
+/* Menu page*/
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 380px;
+}
+
+.planet {
+    padding: 22px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(201, 184, 255, 0.35);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.planet .ic {
+    font-size: 2.2rem;
+}
+
+.planet .t {
+    color: var(--gold);
+    font-size: 0.95rem;
+    text-shadow: 0 0 10px rgba(255, 216, 107, 0.6);
+}
+
+/*Open when */
+.moods {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 340px;
+    margin-bottom: 26px;
+}
+
+.mood {
+    font-family: inherit;
+    font-size: 1.05rem;
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(201, 184, 255, 0.35);
+    color: var(--silver);
+    cursor: pointer;
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid var(--lav);
+    color: var(--lav);
+    font-size: 0.95rem;
+    padding: 10px 22px;
+}
+
+@keyframes shine {
+    0%, 100% { text-shadow: 0 0 8px rgba(255, 216, 107, 0.5), 0 0 18px rgba(255, 216, 107, 0.25); }
+    50%      { text-shadow: 0 0 16px rgba(255, 216, 107, 0.9), 0 0 36px rgba(255, 216, 107, 0.5); }
+}
+
+.script, .planet .t {
+    animation: shine 3.5s ease-in-out infinite;
+}
+
+/*sad*/
+.env {
+    position: relative;
+    width: 230px;
+    height: 150px;
+    border-radius: 8px;
+    background: linear-gradient(#f5e6c8, #e2cfa6);
+    box-shadow: 0 0 30px rgba(255, 216, 107, 0.3);
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 115px solid transparent;
+    border-right: 115px solid transparent;
+    border-top: 85px solid #d9c293;
+}
+
+.env .heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    font-size: 2rem;
+}
+
+.hint {
+    color: var(--lav);
+    font-size: 0.95rem;
+    margin-bottom: 26px;
+}
+
+.letter {
+    display: none;
+    width: 100%;
+    max-width: 340px;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: #fdf6e3;
+    color: #3a2d1c;
+    text-align: start;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.letter .script {
+    color: #8a5a00;
+    text-shadow: none;
+    animation: none;
+    font-size: 1.8rem;
+}
+
+.opened .env,
+.opened .hint {
+    display: none;
+}
+
+.opened .letter {
+    display: block;
+}
+
+.letter {
+    cursor: pointer;
+}
+
+.hint2 {
+    display: none;
+    color: var(--lav);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.opened .hint2 {
+    display: block;
+}
+
+.deck {
+    width: 100%;
+    max-width: 340px;
+    margin-bottom: 22px;
+}
+
+.dcard {
+    cursor: pointer;
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(159, 0, 173, 0.07);
+    border: 1px solid rgba(79, 50, 172, 0.4);
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.dprompt {
+    color: var(--gold);
+    font-size: 1.1rem;
+    padding: 40px 0;
+}
+
+.dcard img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 10px 0;
+}
+
+.dtext {
+    white-space: pre-line;
+    text-align: start;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.dcard.pop {
+    animation: pop 0.45s ease;
+}
+
+@keyframes pop {
+    from { opacity: 0; transform: scale(0.93); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+#player {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(201, 184, 255, 0.35);
+}
+
+#pp, #next {
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#vol {
+    width: 70px;
+}
+
+.fheart {
+    position: fixed;
+    bottom: -30px;
+    z-index: 0;
+    color: rgba(255, 150, 180, 0.55);
+    pointer-events: none;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 0; }
+    10%  { opacity: 1; }
+    to   { transform: translateY(-115vh); opacity: 0; }
+}
+
+#songname {
+    max-width: 90px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.75rem;
+    color: var(--lav);
+}

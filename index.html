@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>For my sweet man </title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Quicksand:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+<body>
+    <canvas id="sky"></canvas>
+    <audio id="audio" preload="auto"></audio>
+
+<div id="player">
+    <button id="pp">▶</button>
+    <button id="next">⏭</button>
+    <span id="songname"></span>
+    <input id="vol" type="range" min="0" max="1" step="0.05" value="0.5">
+</div>
+
+<section class="screen active" id="welcome">
+    <div class="moon"></div>
+    <h1 class="script">For my Sf-suf...</h1>
+    <p class="sub">I couldn't reach your warm hands yet, so I made you this to feel the warmth of mine</p>
+    <p class="sub">A little universe made just for you.</p>
+    <button class="btn" id="enter">✨ From your love</button>
+</section>
+
+<!--Menu page-->
+<section class="screen" id="menu">
+    <h2 class="script">Stay near my little boy</h2>
+    <p class="sub">Pick a planet, my love</p>
+
+    <div class="grid">
+        <div class="planet" data-go="moodroom">
+            <span class="ic">💌</span>
+            <span class="t">Open when</span>
+        </div>
+        <div class="planet" data-go="galaxy">
+            <span class="ic">✨</span>
+            <span class="t">Our Galaxy</span>
+        </div>
+        <div class="planet" data-go="there">
+            <span class="ic">❤️</span>
+            <span class="t">If I were there</span>
+        </div>
+        <div class="planet" data-go="notes">
+            <span class="ic">💝</span>
+            <span class="t">From my heart to yours</span>
+        </div>
+    </div>
+</section>
+
+<!-- Open when-->
+ <section class="screen" id="moodroom">
+    <h2 class="script">Open When...</h2>
+    <p class="sub">How are you feeling right now?</p>
+
+    <div class="moods">
+        <button class="mood" data-mood="sad">😢 You're sad</button>
+        <button class="mood" data-mood="happy">😊 You're happy</button>
+        <button class="mood" data-mood="miss">🥺 You miss me</button>
+        <button class="mood" data-mood="motivation">💪 You need motivation</button>
+    </div>
+
+    <button class="btn ghost" data-go="menu">← Back to the stars</button>
+</section>
+
+<!--Sad-->
+<section class="screen" id="letterscreen">
+    <div class="env" id="env">
+        <div class="flap"></div>
+        <div class="heart">❤️</div>
+    </div>
+    <p class="hint">Tap the envelope to open it 💌</p>
+    <div class="letter" id="letter" dir="auto"></div>
+    <p class="hint2" id="cardhint"></p>
+    <button class="btn ghost" data-go="moodroom">← Back</button>
+</section>
+
+<!--If I was there-->
+<section class="screen" id="there">
+    <h2 class="script">If I Were There...</h2>
+    <p class="sub">Close your eyes, tap the card, and imagine it ❤️</p>
+
+    <div class="deck" id="deckScenes"></div>
+
+    <button class="btn ghost" data-go="menu">← Back to the stars</button>
+</section>
+
+<!--our little galaxy-->
+<section class="screen" id="galaxy">
+    <h2 class="script">Our Little Galaxy</h2>
+    <p class="sub">99 things I love about you ✨</p>
+
+    <div class="deck" id="deckGalaxy"></div>
+
+    <button class="btn ghost" data-go="menu">← Back to the stars</button>
+</section>
+
+<!--From me to u-->
+<section class="screen" id="notes">
+    <h2 class="script">From My Heart To Yours</h2>
+    <p class="sub">Tap the card for a message from me 💌</p>
+
+    <div class="deck" id="deckNotes"></div>
+
+    <button class="btn ghost" data-go="menu">← Back to the stars</button>
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>
